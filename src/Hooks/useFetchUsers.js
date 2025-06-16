@@ -4,7 +4,9 @@ export const useFetchUsers = ( endPoint ) => {
 
  const [users, setUsers] = useState([]);
  const [isLoading, setIsLoading] = useState(true)
+
   const fetchUsers = async () => {
+    setIsLoading(true)
     try {
       const response = await fetch(`https://jsonplaceholder.typicode.com/${endPoint}`);
       const data = await response.json();
@@ -12,7 +14,7 @@ export const useFetchUsers = ( endPoint ) => {
       setIsLoading(false)
       console.log(data)
     } catch (error) {
-      console.error( error )
+      console.error( 'Error en la petición' , error )
     }
   }
 
